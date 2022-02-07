@@ -1,94 +1,75 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iel-mach <iel-mach@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/06 02:42:20 by iel-mach          #+#    #+#             */
+/*   Updated: 2022/02/07 16:37:02 by iel-mach         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "push_swap.h"
+
+
+void	creat_node(t_node **head, int value)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
+	t_node	*new_nod;
+	t_node	*last;
 
-int	ft_atoi(const char *s)
-{
-	int				sign;
-	unsigned long	rus;
-
-	sign = 1;
-	rus = 0;
-	while (*s == 32 || (*s >= 7 && *s <= 13))
-		s++;
-	if (*s == '-' || *s == '+')
+	new_nod = newnode(value);
+	if (*head == NULL)
 	{
-		if (*s == '-')
-			sign *= (-1);
-		s++;
+		*head = new_nod;
+		new_nod->next = NULL;
 	}
-	while (*s >= '0' && *s <= '9')
+	else
 	{
-		rus = (rus * 10) + (*s - 48);
-		s++;
+		last = (*head);
+		while (last->next != NULL)
+			last = last->next;
+		last->next = new_nod;
+		new_nod->next = NULL;
 	}
-	return (sign * rus);
 }
 
-int check_digit(char *s)
-{
-    int i;
-
-    i = 0;
-    if (s[i] == '-' || s[i] == '+')
-        i++;
-    while (s[i])
-    {
-        if (!ft_isdigit(s[i]))
-        {
-            write (1, "ERROR\n", 6);
-            return (0);
-        }
-        i++;
-    }
-    return (1);
-}
-
-int check_doubl(char **s)
-{
-    int i = 1;
-    int j;
-    int a;
-    int b;
-
-    while(s[i])
-    {
-        j = i + 1;
-        a = ft_atoi(s[i]);
-        while (s[j])
-        {
-            b = ft_atoi(s[j]);
-            if (a == b)
-            {
-                write (1, "ERROR double\n", 13);
-                return (0);
-            }
-            j++;
-        }
-        i++;
-    }
-    return (1);
-}
 
 int main(int ac, char **av)
 {
-    int i;
+    // int i;
+	// t_node *a;
+	// t_node *b;
 
-    i = 1;
-    if (ac > 1)
-    {
-        while (av[i])
-        {
-            if(!check_digit(av[i]))
-                return (0);
-            i++;
-        }
-        if (!check_doubl(av))
-            return (0);
-    }
+	// b = NULL;
+	// if (!ft_check(av))
+	// 	return(0);
+	// a = 
+
+	t_node *a;
+	t_node *b;
+	int i;
+	int nb;
+
+	i = 1;
+	a = NULL;
+	b = NULL;
+	if(!ft_check(av))
+	{
+		exit(1);
+	}
+	while (av[i])
+	{
+		creat_node(&a,ft_atoi(av[i]));
+		i++;
+	}
+	ft_swapx(&a);
+	printf("Stack A\n");
+	while (a)
+	{
+		printf("|%d|\n", a->data);
+		a = a->next;
+	}
+	
+
 }
