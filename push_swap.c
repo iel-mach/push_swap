@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-mach <iel-mach@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbouhaba <mbouhaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 02:42:20 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/02/07 16:37:02 by iel-mach         ###   ########.fr       */
+/*   Updated: 2022/02/07 12:34:35 by mbouhaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int main(int ac, char **av)
 		creat_node(&a,ft_atoi(av[i]));
 		i++;
 	}
-	ft_swapx(&a);
+	ft_rx(&a);
 	printf("Stack A\n");
 	while (a)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iel-mach <iel-mach@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbouhaba <mbouhaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 23:53:44 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/02/07 00:23:10 by iel-mach         ###   ########.fr       */
+/*   Updated: 2022/02/07 12:34:20 by mbouhaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ int	ft_isdigit(int c);
 int	ft_check(char **s);
 t_node	*newnode(int value);
 void	ft_swapx(t_node **head);
+void    ft_lstback(t_node **a, t_node *b);
+void	ft_rx(t_node **head);
 
 #endif
