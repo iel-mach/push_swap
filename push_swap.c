@@ -6,28 +6,51 @@
 /*   By: iel-mach <iel-mach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 02:42:20 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/02/15 23:45:39 by iel-mach         ###   ########.fr       */
+/*   Updated: 2022/02/17 01:50:54 by iel-mach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// void	ft_print_stack(t_node **a, t_node **b)
+// {
+// 	printf("Stack A\n");
+// 	while (*a)
+// 	{
+// 		printf("[%d]\n",(*a)->index);
+// 		*a = (*a)->next;
+// 	}
+// 	printf("Stack B\n");
+// 	while (*b)
+// 	{
+// 		printf("|%d|\n", (*b)->index);
+// 		*b = (*b)->next;
+// 	}
+// }
 
-void	ft_print_stack(t_node **a, t_node **b)
+int	ft_check(char **s)
 {
-	printf("Stack A\n");
-	while (*a)
+	int	i;
+
+	i = 1;
+	if (!*s)
+		return (0);
+	while (s[i])
 	{
-		printf("[%d]\n",(*a)->data);
-		*a = (*a)->next;
+		if (!ft_check_digit(s[i]))
+			exit(1);
+		i++;
 	}
-	printf("Stack B\n");
-	while (*b)
+	if (!ft_check_doubl(s))
+		return (0);
+	if (!ft_limit_check(s))
 	{
-		printf("|%d|\n", (*b)->data);
-		*b = (*b)->next;
+		write(1, "Error\n", 6);
+		exit(1);
 	}
+	return (1);
 }
+
 void	ft_creat_node(t_node **head, int value, int index)
 {
 	t_node	*new_nod;
@@ -47,42 +70,49 @@ void	ft_creat_node(t_node **head, int value, int index)
 		last->next = new_nod;
 		new_nod->next = NULL;
 	}
-
 }
 
-
-int main(int ac, char **av)
+void	ft_checks(t_node **a)
 {
- 
-	if (ac > 2)
-	{
-		t_node *a;
-		t_node *b;
-		int i;
+	if (ft_checksort(a))
+		exit(0);
+	else
+		ft_indexing(a);
+}
 
-		i = 1;
+void	ft_main(t_node **a, char **s)
+{
+	int	i;
+
+	i = 1;
+	if (!ft_check(s))
+		exit(1);
+	while (s[i])
+		ft_creat_node(a, ft_atoi(s[i++]), 0);
+	ft_checks(a);
+}
+
+int	main(int ac, char **av)
+{
+	t_node	*a;
+	t_node	*b;
+	int		i;
+
+	if (ac > 1)
+	{
 		a = NULL;
 		b = NULL;
-		if(!ft_check(av))
-			exit(1);
-		while (av[i])
-		{
-			ft_creat_node(&a,ft_atoi(av[i]), 0);
-			i++;
-		}
-		if(ft_checksort(&a))
-			return  0;
-		ft_indexing(&a);
-		int z = ac - 1;
-		if (z == 2)
+		i = ac - 1;
+		ft_main(&a, av);
+		if (i == 2)
 			ft_sort2(&a);
-		else if (z == 3)
+		else if (i == 3)
 			ft_sort3(&a, &b);
-		else if (z == 4)
+		else if (i == 4)
 			ft_sort4(&a, &b);
-		else if (z == 5)
+		else if (i == 5)
 			ft_sort5(&a, &b);
-		else if (z > 5)
+		else if (i > 5)
 			ft_sort100(&a, &b);
 	}
 }
