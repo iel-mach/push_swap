@@ -6,7 +6,7 @@
 /*   By: iel-mach <iel-mach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 03:09:49 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/02/17 07:47:31 by iel-mach         ###   ########.fr       */
+/*   Updated: 2022/02/17 08:26:58 by iel-mach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,14 @@ int	main(int ac, char **av)
 		{
 			if (!ft_checker1(&a, &b, l) && !ft_checker2(&a, &b, l))
 			{
+				free(l);
 				write(2, "Error\n", 6);
 				exit(1);
 			}
+			free(l);
 			l = get_next_line(0);
 		}
 		ft_sortchecker(&a);
 	}
+	return (0);
 }
