@@ -6,7 +6,7 @@
 /*   By: iel-mach <iel-mach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 00:19:51 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/02/15 22:02:12 by iel-mach         ###   ########.fr       */
+/*   Updated: 2022/02/17 04:41:29 by iel-mach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_swapx(t_node **head, char c)
 {
 	t_node	*tmp;
 
+	if (!head || !(*head))
+		return ;
 	tmp = (*head)->next;
 	(*head)->next = tmp->next;
 	tmp->next = *head;
@@ -30,6 +32,8 @@ void	ft_rx(t_node **head, char c)
 {
 	t_node	*tmp;
 
+	if (!head || !(*head))
+		return ;
 	tmp = (*head);
 	(*head) = (*head)->next;
 	tmp->next = NULL;
@@ -66,7 +70,7 @@ void	ft_rrx(t_node **head, char c)
 		write(1, "rrb\n", 4);
 }
 
-void	ft_push_b(t_node **head, t_node **stack_b)
+void	ft_push_b(t_node **head, t_node **stack_b, int n)
 {
 	t_node	*tmp;
 	t_node	*b;
@@ -83,10 +87,11 @@ void	ft_push_b(t_node **head, t_node **stack_b)
 	tmp = ft_newnode(value, index);
 	ft_lstadd_front(stack_b, tmp);
 	ft_dellst(head);
-	write(1, "pb\n", 3);
+	if (n == 1)
+		write(1, "pb\n", 3);
 }
 
-void	ft_push_a(t_node **head, t_node **stack_b)
+void	ft_push_a(t_node **head, t_node **stack_b, int n)
 {
 	t_node	*tmp;
 	t_node	*b;
@@ -94,6 +99,8 @@ void	ft_push_a(t_node **head, t_node **stack_b)
 	int		value;
 	int		index;
 
+	if (!head || !(*head))
+		return ;
 	a = *head;
 	b = *stack_b;
 	value = b->data;
@@ -101,5 +108,6 @@ void	ft_push_a(t_node **head, t_node **stack_b)
 	tmp = ft_newnode(value, index);
 	ft_lstadd_front(head, tmp);
 	ft_dellst(stack_b);
-	write(1, "pa\n", 3);
+	if (n == 1)
+		write(1, "pa\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: iel-mach <iel-mach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 23:08:00 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/02/17 01:03:43 by iel-mach         ###   ########.fr       */
+/*   Updated: 2022/02/17 04:05:08 by iel-mach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_push_to_b(t_node **a, t_node **b, int pos)
 			ft_rx(a, 'a');
 			pos--;
 		}
-		ft_push_b(a, b);
+		ft_push_b(a, b, 1);
 	}
 	else
 	{
@@ -60,7 +60,7 @@ void	ft_push_to_b(t_node **a, t_node **b, int pos)
 			ft_rrx(a, 'a');
 			pos++;
 		}
-		ft_push_b(a, b);
+		ft_push_b(a, b, 1);
 	}
 }
 
@@ -70,7 +70,7 @@ void	ft_art(t_node **a, t_node **b, t_push *push)
 
 	size = ft_sizestack(a);
 	if ((*a)->index <= push->max && (*a)->index >= push->min)
-		ft_push_b(a, b);
+		ft_push_b(a, b, 1);
 	else
 	{
 		ft_push_to_b(a, b, push->pos);
@@ -93,7 +93,7 @@ void	ft_boocl(t_node **a, t_node **b, int number)
 		if (ft_check_9(number, b) == 1)
 		{
 			if (number == (*b)->index)
-				ft_push_a(a, b);
+				ft_push_a(a, b, 1);
 			else
 				ft_push_to_a(a, b, last, j);
 		}

@@ -6,7 +6,7 @@
 /*   By: iel-mach <iel-mach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 22:58:27 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/02/17 01:40:49 by iel-mach         ###   ########.fr       */
+/*   Updated: 2022/02/17 04:03:07 by iel-mach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	ft_i0(t_node **head, t_node **b)
 {
-	ft_push_b(head, b);
+	ft_push_b(head, b, 1);
 	ft_sort2(head);
-	ft_push_a(head, b);
+	ft_push_a(head, b, 1);
 }
 
 void	ft_sort3(t_node **head, t_node **b)

@@ -6,7 +6,7 @@
 /*   By: iel-mach <iel-mach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 20:29:28 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/02/17 01:03:39 by iel-mach         ###   ########.fr       */
+/*   Updated: 2022/02/17 04:05:21 by iel-mach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_push_to_a(t_node **a, t_node **b, int last, int j)
 {
 	if ((*b)->index < (*a)->index && (*b)->index > last)
 	{
-		ft_push_a(a, b);
+		ft_push_a(a, b, 1);
 		ft_rx(a, 'a');
 	}
 	else

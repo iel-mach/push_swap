@@ -6,7 +6,7 @@
 /*   By: iel-mach <iel-mach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 02:57:21 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/02/15 20:37:23 by iel-mach         ###   ########.fr       */
+/*   Updated: 2022/02/17 07:47:44 by iel-mach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,25 @@ void	ft_dellst(t_node **head)
 	tmp = *head;
 	*head = (*head)->next;
 	free(tmp);
+}
+
+void	ft_creat_node(t_node **head, int value, int index)
+{
+	t_node	*new_nod;
+	t_node	*last;
+
+	new_nod = ft_newnode(value, index);
+	if (*head == NULL)
+	{
+		*head = new_nod;
+		new_nod->next = NULL;
+	}
+	else
+	{
+		last = (*head);
+		while (last->next != NULL)
+			last = last->next;
+		last->next = new_nod;
+		new_nod->next = NULL;
+	}
 }
