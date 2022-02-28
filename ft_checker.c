@@ -6,7 +6,7 @@
 /*   By: iel-mach <iel-mach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 03:09:49 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/02/17 08:26:58 by iel-mach         ###   ########.fr       */
+/*   Updated: 2022/02/17 23:31:24 by iel-mach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,13 @@ int	ft_checker2(t_node **a, t_node **b, char *l)
 	return (0);
 }
 
-void	ft_sortchecker(t_node **a)
+void	ft_sortchecker(t_node **a, int size)
 {
+	if (size != ft_sizestack(a))
+	{
+		write(1, "KO\n", 3);
+		return ;
+	}
 	if (ft_checksort(a))
 		write(1, "OK\n", 3);
 	else
@@ -81,11 +86,13 @@ int	main(int ac, char **av)
 	t_node	*a;
 	t_node	*b;
 	char	*l;
+	int		size;
 
 	if (ac > 1)
 	{
 		b = NULL;
-		ft_main(&a, av);
+		ft_main2(&a, av);
+		size = ft_sizestack(&a);
 		l = get_next_line(0);
 		while (l)
 		{
@@ -98,7 +105,7 @@ int	main(int ac, char **av)
 			free(l);
 			l = get_next_line(0);
 		}
-		ft_sortchecker(&a);
+		ft_sortchecker(&a, size);
 	}
 	return (0);
 }

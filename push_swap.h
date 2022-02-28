@@ -6,7 +6,7 @@
 /*   By: iel-mach <iel-mach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 23:53:44 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/02/17 05:46:00 by iel-mach         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:31:41 by iel-mach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct push
 
 }	t_push;
 long int	ft_atoi(const char *s);
+void		ft_main2(t_node **a, char **s);
 int			ft_check_doubl(char **s);
 int			*ft_array(t_node **head);
 int			ft_check_digit(char *s);

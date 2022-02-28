@@ -6,7 +6,7 @@
 /*   By: iel-mach <iel-mach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 00:19:51 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/02/17 04:41:29 by iel-mach         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:13:40 by iel-mach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_push_b(t_node **head, t_node **stack_b, int n)
 	int		value;
 	int		index;
 
-	if (*head == NULL)
+	if (!(*head))
 		return ;
 	a = *head;
 	b = *stack_b;
@@ -99,7 +99,7 @@ void	ft_push_a(t_node **head, t_node **stack_b, int n)
 	int		value;
 	int		index;
 
-	if (!head || !(*head))
+	if (!(*stack_b))
 		return ;
 	a = *head;
 	b = *stack_b;

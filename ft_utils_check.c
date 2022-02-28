@@ -6,17 +6,20 @@
 /*   By: iel-mach <iel-mach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 02:41:07 by iel-mach          #+#    #+#             */
-/*   Updated: 2022/02/17 02:45:14 by iel-mach         ###   ########.fr       */
+/*   Updated: 2022/02/17 23:43:10 by iel-mach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_isdigit(int c)
+static void	ft_check_limit(int sign, unsigned long rus)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	if (((rus > 2147483648) && sign == -1) \
+		|| (rus > 2147483647 && sign == 1))
+	{
+		write (2, "Error\n", 6);
+		exit (EXIT_FAILURE);
+	}
 }
 
 long int	ft_atoi(const char *s)
@@ -31,8 +34,6 @@ long int	ft_atoi(const char *s)
 		write(2, "Error\n", 6);
 		exit(EXIT_FAILURE);
 	}
-	while (*s == 32 || (*s >= 7 && *s <= 13))
-		s++;
 	if (*s == '-' || *s == '+')
 	{
 		if (*s == '-')
@@ -43,24 +44,9 @@ long int	ft_atoi(const char *s)
 	{
 		rus = (rus * 10) + (*s - 48);
 		s++;
+		ft_check_limit(sign, rus);
 	}
 	return (sign * rus);
-}
-
-int	ft_limit_check(char **s)
-{
-	long int	num;
-	int			i;
-
-	i = 0;
-	while (s[i])
-	{
-		num = ft_atoi(s[i]);
-		if (num > 2147483647 || num < -2147483648)
-			return (0);
-		i++;
-	}
-	return (1);
 }
 
 int	ft_check_digit(char *s)
